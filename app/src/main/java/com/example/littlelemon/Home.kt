@@ -9,6 +9,6 @@ import androidx.compose.runtime.Composable
 @Composable
 fun Home(profile: SharedPreferences, isloggedin: Boolean = false) {
     Log.d(ContentValues.TAG, "Home")
-    Text(text = "Hello ${profile.getString("firstname", "Adam")}. Your are $isloggedin")
+    Hero()
 
 }
