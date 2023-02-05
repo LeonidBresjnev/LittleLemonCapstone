@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LittleLemon</string>
     <string name="logoDesc">This is the Logo of the Little Lemon Restaurant</string>
+    <string name="profileDesc">This profile avatar</string>
     <string name="firstname">Firstname</string>
     <string name="letsgo">Let\'s get to know you</string>
     <string name="lastname">Lastname</string>
