@@ -7,13 +7,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 @Composable
-fun Navigation(navController: NavHostController, profile: SharedPreferences, isloggedin: Boolean, logout: ()-> Unit, login:  ()-> Unit,
-               databaseitems: List<MenuItemRoom>) {
+fun Navigation(navController: NavHostController, profile: SharedPreferences, logout: ()-> Unit, login:  ()-> Unit,
+               databaseitems: List<MenuItemRoom>, startdestination: String) {
 
 
     NavHost(
         navController = navController,
-        startDestination =  Onboarding.route
+        startDestination =  startdestination
     ) {
         composable(Home.route) {
             Home(databaseitems = databaseitems)

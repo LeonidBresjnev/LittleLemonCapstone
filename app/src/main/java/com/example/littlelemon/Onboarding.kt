@@ -24,8 +24,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import kotlinx.coroutines.*
-import kotlin.time.Duration.Companion.seconds
 
 @Composable
 fun Onboarding(navController: NavController, profile: SharedPreferences, login: () -> Unit) {
@@ -121,6 +119,7 @@ fun Onboarding(navController: NavController, profile: SharedPreferences, login: 
                         .putString("firstname", firstname)
                         .putString("lastname", lastname)
                         .putString("email", email)
+                        .putBoolean("loggedin", true)
                         .apply()
                     navController.navigate(Home.route)
                 }

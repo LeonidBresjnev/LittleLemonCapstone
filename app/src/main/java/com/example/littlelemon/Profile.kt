@@ -64,8 +64,8 @@ fun Profile(navController: NavController, profile: SharedPreferences, logout: ()
             modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)
                 .fillMaxWidth(0.75f),
-            onClick =  {logout()
-
+            onClick =  {logout.invoke()
+            profile.edit().putBoolean("loggedin", false).apply()
                 navController.navigate(Onboarding.route)},
             colors = ButtonDefaults.buttonColors(
                 colorResource(id = R.color.yellow)

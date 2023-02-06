@@ -79,26 +79,26 @@ class MainActivity : ComponentActivity() {
                 Log.d(ContentValues.TAG,"data fetchet!")
                 Log.d(ContentValues.TAG,"${mymenu.size}")
                 if (database.menuItemDao().isEmpty()) {
-                    Log.d(ContentValues.TAG,"database empty!")
                     val menuItemsRoom = mymenu.map { it.toMenuItemRoom() }
-                    Log.d(ContentValues.TAG,"data mapped!")
                     database.menuItemDao().insertAll(*menuItemsRoom.toTypedArray())
-                    Log.d(ContentValues.TAG,"data inserted!")
 
                 }
             }
             catch (e: Exception) {
                 Log.d(ContentValues.TAG,e.message?:"")
-                //exitProcess(0)
             }
         }
     }
 }
 
 @Composable
-private fun AppScreen(profile: SharedPreferences , databaseitems: List<MenuItemRoom>) {
+private fun AppScreen(profile: SharedPreferences ,
+                      databaseitems: List<MenuItemRoom>) {
     val navController = rememberNavController()
-    var isloggedin by remember{ mutableStateOf(value=false) }
+    val loggedinfromstart = profile.getBoolean("loggedin",false)
+    var isloggedin by remember{ mutableStateOf(loggedinfromstart) }
+
+
 
     val logout : () -> Unit = {isloggedin = false}
     val login : () -> Unit = { isloggedin = true }
@@ -116,8 +116,8 @@ private fun AppScreen(profile: SharedPreferences , databaseitems: List<MenuItemR
             Navigation(navController=navController,
                 profile=profile, login=login,
                 logout=logout,
-                isloggedin = isloggedin ,
-                databaseitems=databaseitems
+                databaseitems=databaseitems,
+                startdestination = if (loggedinfromstart) Profile.route else Onboarding.route
             )
         }
     }
