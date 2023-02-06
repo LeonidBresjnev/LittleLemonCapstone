@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Hero(searchstring : String, changesearchstring : (String) -> Unit) {
+
         Column(
             modifier = Modifier
                 .background(color = MaterialTheme.colors.primary)

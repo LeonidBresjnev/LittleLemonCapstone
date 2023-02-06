@@ -9,4 +9,5 @@
     <string name="adam">Adam</string>
     <string name="smith">Smith</string>
     <string name="entersearchphrase">Enter search phrase</string>
+    <string name="orderfordelivery">Order for delivery!</string>
 </resources>
