@@ -70,7 +70,7 @@ focused on traditional recipes served with a modern twist"""
                 .clip(RoundedCornerShape(10.dp))
                 .fillMaxWidth()
                 .background(color = MaterialTheme.colors.onPrimary),
-                placeholder= { stringResource(R.string.entersearchphrase) },
+                placeholder= { Text(text=stringResource(R.string.entersearchphrase)) },
                 value = searchstring,
                 enabled=true,
                 readOnly = false,
