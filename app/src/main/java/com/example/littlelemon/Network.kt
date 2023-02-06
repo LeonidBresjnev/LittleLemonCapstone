@@ -19,7 +19,7 @@ data class MenuItemNetwork(
     val description: String,
 
     @SerialName("price")
-    val price: Double,
+    val price: String,
 
     @SerialName("image")
     val image: String,
@@ -29,6 +29,7 @@ data class MenuItemNetwork(
 
     ) {
 
-    fun toMenuItemRoom() = MenuItemRoom(id, title, description,  price, image, category)
+    fun toMenuItemRoom() = MenuItemRoom(
+        id, title, description,  price, image, category)
 
 }
