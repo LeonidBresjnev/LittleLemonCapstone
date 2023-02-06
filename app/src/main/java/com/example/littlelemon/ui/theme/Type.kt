@@ -34,7 +34,7 @@ val Typography = Typography(
     body1 = TextStyle(
         fontFamily = karla,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp),
+        fontSize = 18.sp),
 
         subtitle1 = TextStyle(
             fontFamily = karla,

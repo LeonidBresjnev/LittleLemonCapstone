@@ -31,7 +31,15 @@ fun Home(databaseitems: List<MenuItemRoom>) {
     //if category is 0, then show all,
     // if category is not 0, then show specific category
     var category by remember { mutableStateOf(value=0) }
-    if (category != 0)
+    if (category != 0) {
+        menuItems=menuItems.filter {it.category == when (category) {
+            1 -> "starters"
+            2 -> "mains"
+            3 -> "desserts"
+            4 -> "drinks"
+            else -> ""
+        } }
+    }
 
     Column {
         Hero(searchstring = searchstring ,
@@ -47,20 +55,20 @@ fun Home(databaseitems: List<MenuItemRoom>) {
                 horizontalArrangement = Arrangement.SpaceEvenly) {
 
                 Button(colors = ButtonDefaults.buttonColors(if (category == 1) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary),
-                    onClick = { category = if (category == 0) 1 else 0  }) {
+                    onClick = { category = if (category != 1) 1 else 0  }) {
 Text(modifier = Modifier.background(if (category == 1) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary),
     text="Starters")
                 }
                 Button(colors = ButtonDefaults.buttonColors(if (category == 2) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary),
-                    onClick = { category = if (category == 0) 2 else 0 }) {
+                    onClick = { category = if (category != 2) 2 else 0 }) {
                     Text(modifier = Modifier.background(if (category == 2) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary), text="Mains")
                 }
                 Button(colors = ButtonDefaults.buttonColors(if (category == 3) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary),
-                    onClick = { category = if (category == 0) 3 else 0 }) {
+                    onClick = { category = if (category != 3) 3 else 0 }) {
                     Text(modifier = Modifier.background(if (category ==3) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary), text="Dessert")
                 }
                 Button(colors = ButtonDefaults.buttonColors(if (category == 4) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary),
-                    onClick = { category = if (category == 0) 4 else 0 }) {
+                    onClick = { category = if (category !=4) 4 else 0 }) {
                     Text(modifier = Modifier.background(if (category == 4) MaterialTheme.colors.primaryVariant else MaterialTheme.colors.primary), text="Drinks")
                 }
             }

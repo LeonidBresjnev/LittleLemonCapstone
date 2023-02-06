@@ -4,23 +4,25 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun Hero(searchstring : String, changesearchstring : (String) -> Unit) {
 
@@ -67,6 +69,7 @@ focused on traditional recipes served with a modern twist"""
                 )
             }
             Spacer(modifier = Modifier.height(5.dp))
+            val keyboardController = LocalSoftwareKeyboardController.current
             TextField(modifier = Modifier
                 .clip(RoundedCornerShape(10.dp))
                 .fillMaxWidth()
@@ -88,7 +91,10 @@ focused on traditional recipes served with a modern twist"""
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Done
-                )
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {keyboardController?.hide()}),
+                textStyle = MaterialTheme.typography.body1
             )
         }
 }
