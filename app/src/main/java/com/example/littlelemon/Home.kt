@@ -45,7 +45,7 @@ fun Home(databaseitems: List<MenuItemRoom>) {
         Hero(searchstring = searchstring ,
             changesearchstring = { searchstring = it })
 
-        Column() {
+        Column {
             Text(modifier=Modifier
                 .align(alignment = Alignment.CenterHorizontally),
                 style = MaterialTheme.typography.h3,
@@ -121,4 +121,3 @@ Text(modifier = Modifier.background(if (category == 1) MaterialTheme.colors.prim
     }
 
 }
-

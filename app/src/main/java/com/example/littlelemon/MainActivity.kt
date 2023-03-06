@@ -29,7 +29,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
+class   MainActivity : ComponentActivity() {
 
     private val httpClient = HttpClient(Android) {
         install(ContentNegotiation) {
@@ -81,7 +81,6 @@ class MainActivity : ComponentActivity() {
                 if (database.menuItemDao().isEmpty()) {
                     val menuItemsRoom = mymenu.map { it.toMenuItemRoom() }
                     database.menuItemDao().insertAll(*menuItemsRoom.toTypedArray())
-
                 }
             }
             catch (e: Exception) {

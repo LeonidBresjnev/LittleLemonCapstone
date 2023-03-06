@@ -10,7 +10,6 @@ import androidx.navigation.compose.composable
 fun Navigation(navController: NavHostController, profile: SharedPreferences, logout: ()-> Unit, login:  ()-> Unit,
                databaseitems: List<MenuItemRoom>, startdestination: String) {
 
-
     NavHost(
         navController = navController,
         startDestination =  startdestination
@@ -26,6 +25,5 @@ fun Navigation(navController: NavHostController, profile: SharedPreferences, log
         composable(Profile.route  ) {
             Profile(navController=navController, profile = profile, logout = logout)
         }
-
     }
 }
